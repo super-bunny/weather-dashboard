@@ -1,9 +1,35 @@
 import React from 'react'
 import './Home.css'
 
-export default class Home extends React.Component {
-  render ()
-  {
+class Home extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      inputValue: '',
+    }
+    this.onChange = this.onChange.bind(this)
+    this.submit = this.submit.bind(this)
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', (event) => {
+      if (event.code === 'Enter' && this.state.inputValue.length > 0) {
+        this.submit()
+      }
+    })
+  }
+
+  onChange(event) {
+    this.setState({
+      inputValue: event.target.value,
+    })
+  }
+
+  submit() {
+    this.props.onSubmit(this.state.inputValue)
+  }
+
+  render() {
     return (<div className="Home">
       <h1 className="title">WEATHER</h1>
       <p>Get city weather thanks to <a href="https://openweathermap.org">OpenWeather API</a></p>
@@ -14,8 +40,16 @@ export default class Home extends React.Component {
           type="search"
           placeholder="City"
           dir="auto"
+          defaultValue={this.inputValue}
+          onChange={this.onChange}
+        />
+        <button
+          class="bp3-button bp3-minimal bp3-intent-primary bp3-icon-arrow-right"
+          onClick={this.submit}
         />
       </div>
     </div>)
   }
 }
+
+export default Home
