@@ -32,6 +32,14 @@ export default class CityWeather {
     return this.data.main.humidity
   }
 
+  get description(): string {
+    return this.data.weather[0].description
+  }
+
+  get imgUrl(): string {
+    return `http://openweathermap.org/img/wn/${ this.data.weather[0].icon }@2x.png`
+  }
+
   async refresh(): Promise<boolean | AxiosError> {
     return await axios.get(`https://api.openweathermap.org/data/2.5/weather`,
       {
