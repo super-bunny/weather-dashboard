@@ -13,7 +13,6 @@ export default class App extends React.Component {
   }
 
   searchCity(value) {
-    console.log(value)
     this.setState({
       search: value,
     })
