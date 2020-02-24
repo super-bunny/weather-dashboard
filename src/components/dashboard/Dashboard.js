@@ -45,6 +45,7 @@ export default class Dashboard extends React.Component {
         <img
           className="image"
           src={this.weatherData.imgUrl}
+          alt="weather"
         />
         <p className="description">{this.weatherData.description}</p>
       </div>
