@@ -9,8 +9,20 @@
     align-items: center;
     justify-content: center;
 
+    .time {
+      color: grey;
+      font-size: 1.5rem;
+      position: absolute;
+      top: 20px;
+    }
+
     .header {
       margin-bottom: 25px;
+
+      .country-code {
+        color: grey;
+        font-size: 1.5rem;
+      }
 
       .cityName {
         margin: 0;
@@ -18,9 +30,6 @@
         text-transform: uppercase;
       }
 
-      .time {
-        font-size: 1.5rem;
-      }
     }
 
     .weather {
