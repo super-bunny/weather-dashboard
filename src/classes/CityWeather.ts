@@ -12,6 +12,10 @@ export default class CityWeather {
     return this.data.name
   }
 
+  get countryCode(): string {
+    return this.data.sys.country
+  }
+
   get temperature(): number {
     return this.data.main.temp
   }
