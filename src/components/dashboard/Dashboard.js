@@ -4,18 +4,16 @@ import CityWeather from '../../classes/CityWeather.ts'
 import { Button } from '@blueprintjs/core'
 
 export default class Dashboard extends React.Component {
-  constructor (props)
-  {
+  constructor(props) {
     super(props)
-    this.setState({
+    this.state = {
       loading: false,
-    })
+    }
     this.loading = false
     this.time = new Date()
   }
 
-  componentDidMount ()
-  {
+  componentDidMount() {
     CityWeather.getInstance(this.props.city)
       .then(weather => {
         this.weatherData = weather
@@ -26,8 +24,7 @@ export default class Dashboard extends React.Component {
       })
   }
 
-  refreshData ()
-  {
+  refreshData() {
     this.time = new Date()
     this.loading = true
     this.setState({})
@@ -38,12 +35,18 @@ export default class Dashboard extends React.Component {
       })
   }
 
-  content ()
-  {
+  content() {
     return <div className="content">
       <div className="header">
         <h1 className="cityName">{this.weatherData.city}</h1>
         <div className="time">{this.time.getHours()}h{('0' + this.time.getMinutes()).slice(-2)}</div>
+      </div>
+      <div className="weather">
+        <img
+          className="image"
+          src={this.weatherData.imgUrl}
+        />
+        <p className="description">{this.weatherData.description}</p>
       </div>
       <div className="mainValues">
         <div>
@@ -64,8 +67,7 @@ export default class Dashboard extends React.Component {
     </div>
   }
 
-  render ()
-  {
+  render() {
     let content
     if (this.weatherData) {
       content = this.content()

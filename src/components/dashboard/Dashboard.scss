@@ -10,17 +10,28 @@
     justify-content: center;
 
     .header {
-      margin-bottom: 50px;
+      margin-bottom: 25px;
 
       .cityName {
         margin: 0;
         font-size: 6em;
-        //font-style: italic;
         text-transform: uppercase;
       }
 
       .time {
         font-size: 1.5rem;
+      }
+    }
+
+    .weather {
+      margin-bottom: 50px;
+
+      .image {
+      }
+
+      .description {
+        text-transform: capitalize;
+        font-size: 1.2rem;
       }
     }
 
