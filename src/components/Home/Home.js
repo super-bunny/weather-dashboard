@@ -33,10 +33,10 @@ class Home extends React.Component {
     return (<div className="Home">
       <h1 className="title">WEATHER</h1>
       <p>Get city weather thanks to <a href="https://openweathermap.org">OpenWeather API</a></p>
-      <div class="searchBar bp3-input-group bp3-large">
-        <span class="bp3-icon bp3-icon-search bp3-large"/>
+      <div className="searchBar bp3-input-group bp3-large">
+        <span className="bp3-icon bp3-icon-search bp3-large"/>
         <input
-          class="bp3-input"
+          className="bp3-input"
           type="search"
           placeholder="City"
           dir="auto"
@@ -44,7 +44,7 @@ class Home extends React.Component {
           onChange={this.onChange}
         />
         <button
-          class="bp3-button bp3-minimal bp3-intent-primary bp3-icon-arrow-right"
+          className="bp3-button bp3-minimal bp3-intent-primary bp3-icon-arrow-right"
           onClick={this.submit}
         />
       </div>
