@@ -50,7 +50,7 @@ export default class CityWeather {
         params: {
           q: this.city,
           units: 'metric',
-          appid: process.env.REACT_APP_API_KEY_OPEN_WEATHER,
+          appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
         },
       })
       .then((response: AxiosResponse<ICurrentWeatherData>) => {
@@ -65,7 +65,7 @@ export default class CityWeather {
         params: {
           q: city,
           units: 'metric',
-          appid: process.env.REACT_APP_API_KEY_OPEN_WEATHER,
+          appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
         },
       })
       .then(
