@@ -1,6 +1,10 @@
 import axios, { AxiosError, AxiosResponse } from 'axios'
 import ICurrentWeatherData from '../types/CityWeather'
 
+const OPEN_WEATHER_HOST = process.env.REACT_APP_OPEN_WEATHER_API_HOST || 'api.openweathermap.org'
+const OPEN_WEATHER_PORT = process.env.REACT_APP_OPEN_WEATHER_API_PORT || 80
+const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY
+
 export default class CityWeather {
   private data: ICurrentWeatherData
 
@@ -45,12 +49,12 @@ export default class CityWeather {
   }
 
   async refresh(): Promise<boolean | AxiosError> {
-    return await axios.get(`https://api.openweathermap.org/data/2.5/weather`,
+    return await axios.get(`http://${ OPEN_WEATHER_HOST }:${ OPEN_WEATHER_PORT }/data/2.5/weather`,
       {
         params: {
           q: this.city,
           units: 'metric',
-          appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
+          appid: OPEN_WEATHER_API_KEY,
         },
       })
       .then((response: AxiosResponse<ICurrentWeatherData>) => {
@@ -60,12 +64,12 @@ export default class CityWeather {
   }
 
   static async getInstance(city: string): Promise<CityWeather | AxiosError> {
-    return await axios.get(`https://api.openweathermap.org/data/2.5/weather`,
+    return await axios.get(`http://${ OPEN_WEATHER_HOST }:${ OPEN_WEATHER_PORT }/data/2.5/weather`,
       {
         params: {
           q: city,
           units: 'metric',
-          appid: process.env.REACT_APP_OPEN_WEATHER_API_KEY,
+          appid: OPEN_WEATHER_API_KEY,
         },
       })
       .then(
