@@ -1,9 +1,10 @@
 import axios, { AxiosError, AxiosResponse } from 'axios'
 import ICurrentWeatherData from '../types/CityWeather'
 
-const OPEN_WEATHER_HOST = process.env.REACT_APP_OPEN_WEATHER_API_HOST || 'api.openweathermap.org'
-const OPEN_WEATHER_PORT = process.env.REACT_APP_OPEN_WEATHER_API_PORT || 80
 const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY
+const OPEN_WEATHER_URL = String(process.env.REACT_APP_OPEN_WEATHER_PROXY_SAME_ORIGIN).toLowerCase() === 'true' ?
+  `${ window.location.origin }/${ process.env.REACT_APP_OPEN_WEATHER_PROXY_PATH }` :
+  process.env.REACT_APP_OPEN_WEATHER_URL || 'http://api.openweathermap.org/data/2.5/weather'
 
 export default class CityWeather {
   private data: ICurrentWeatherData
@@ -49,7 +50,7 @@ export default class CityWeather {
   }
 
   async refresh(): Promise<boolean | AxiosError> {
-    return await axios.get(`http://${ OPEN_WEATHER_HOST }:${ OPEN_WEATHER_PORT }/data/2.5/weather`,
+    return await axios.get(OPEN_WEATHER_URL,
       {
         params: {
           q: this.city,
@@ -64,7 +65,7 @@ export default class CityWeather {
   }
 
   static async getInstance(city: string): Promise<CityWeather | AxiosError> {
-    return await axios.get(`http://${ OPEN_WEATHER_HOST }:${ OPEN_WEATHER_PORT }/data/2.5/weather`,
+    return await axios.get(OPEN_WEATHER_URL,
       {
         params: {
           q: city,

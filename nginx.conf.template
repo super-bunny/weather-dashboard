@@ -22,6 +22,10 @@ http {
     location / {
       try_files $uri $uri/ /index.html;
     }
+    location /open-weather-proxy {
+      set $args $args&appid=${OPEN_WEATHER_API_KEY};
+      proxy_pass http://api.openweathermap.org/data/2.5/weather;
+    }
     error_page   500 502 503 504  /50x.html;
     location = /50x.html {
       root   /usr/share/nginx/html;

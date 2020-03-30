@@ -9,4 +9,4 @@ FROM nginx as production-stage
 RUN mkdir /app
 COPY --from=build-stage /app/build /app
 COPY nginx.conf.template .
-CMD ["/bin/sh" , "-c" , "envsubst '${PORT}' < /nginx.conf.template > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"]
+CMD ["/bin/sh" , "-c" , "envsubst '${PORT} ${OPEN_WEATHER_API_KEY}' < /nginx.conf.template > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"]
