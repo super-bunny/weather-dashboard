@@ -1,3 +1,6 @@
 build:
   docker:
     web: Dockerfile
+  config:
+    REACT_APP_OPEN_WEATHER_PROXY_SAME_ORIGIN: true
+    REACT_APP_OPEN_WEATHER_PROXY_PATH: open-weather-proxy
