@@ -10,6 +10,7 @@ COPY ./ .
 RUN npm run build
 
 FROM nginx as production-stage
+ENV PORT=80
 RUN mkdir /app
 COPY --from=build-stage /app/build /app
 COPY nginx.conf.template .
