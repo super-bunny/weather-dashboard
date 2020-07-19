@@ -40,6 +40,7 @@ class Home extends React.Component {
           type="search"
           placeholder="City"
           dir="auto"
+          autoFocus
           defaultValue={this.inputValue}
           onChange={this.onChange}
         />
