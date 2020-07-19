@@ -42,7 +42,10 @@ export default class Dashboard extends React.Component {
 
   content() {
     return <div className="content">
-      <div className="time">{('0' + this.state.time.getHours()).slice(-2)}h{('0' + this.state.time.getMinutes()).slice(-2)}</div>
+      <div className="time">
+        <small className="time-label">last update</small>
+        <div>{('0' + this.state.time.getHours()).slice(-2)}h{('0' + this.state.time.getMinutes()).slice(-2)}</div>
+      </div>
       <div className="header">
         <h1 className="cityName">{this.state.weatherData.city}</h1>
         <div className="country-code">{this.state.weatherData.countryCode}</div>
