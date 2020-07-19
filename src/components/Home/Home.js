@@ -41,7 +41,7 @@ class Home extends React.Component {
           placeholder="City"
           dir="auto"
           autoFocus
-          defaultValue={this.inputValue}
+          value={this.state.inputValue}
           onChange={this.onChange}
         />
         <button
