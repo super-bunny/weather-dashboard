@@ -4,7 +4,7 @@ import ICurrentWeatherData from '../types/CityWeather'
 const OPEN_WEATHER_API_KEY = process.env.REACT_APP_OPEN_WEATHER_API_KEY
 const OPEN_WEATHER_URL = String(process.env.REACT_APP_OPEN_WEATHER_PROXY_SAME_ORIGIN).toLowerCase() === 'true' ?
   `${ window.location.origin }/${ process.env.REACT_APP_OPEN_WEATHER_PROXY_PATH }` :
-  process.env.REACT_APP_OPEN_WEATHER_URL || 'http://api.openweathermap.org/data/2.5/weather'
+  process.env.REACT_APP_OPEN_WEATHER_URL || 'https://api.openweathermap.org/data/2.5/weather'
 
 export default class CityWeather {
   private data: ICurrentWeatherData
